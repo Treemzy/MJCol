@@ -1,0 +1,106 @@
+﻿@model IEnumerable<MJCollections.Models.Sales>
+
+@using MJCollections.Models;
+
+@{
+    ViewBag.Title = "Index";
+    //ApplicationDbContext db = new ApplicationDbContext();
+    //var product = db.StockBalances..Include(s => s.ProductId);
+    //var quantity = db.StockBalances.Where(x => x.Quantity == product.p).FirstOrDefault();
+
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Pictures)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Products.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SaleTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnitPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Creator)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserIdN)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pictures)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Products.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SaleTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+           @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UnitPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Creator)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserIdN)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SalesId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SalesId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.SalesId })|
+            @Html.ActionLink("Request", "Requests", new { id = item.SalesId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,170 @@
+﻿@model MJCollections.Models.Sales
+@using Microsoft.AspNet.Identity
+@using MJCollections.Models;
+@{
+    ViewBag.Title = "Request";
+    ApplicationDbContext db = new ApplicationDbContext();
+
+}
+@if (TempData["Message"] != null)
+{
+    <div class="alert-danger">
+        @TempData["Message"]
+    </div>
+}
+
+<h2>Request</h2>
+
+<div>
+    <h4>Request for this Item</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Pictures)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pictures)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Products.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Products.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SaleTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SaleTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UnitPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnitPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        @*<dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Creator)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Creator)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserIdN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserIdN)
+        </dd>*@
+
+    </dl>
+</div>
+<br /><br />
+
+<div class="col-md-12">
+
+    @using (Html.BeginForm("Order", "Sales"))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.SalesId)
+
+        <div class="form-horizontal">
+            <h4>Make Request Below</h4>
+            <hr />
+            <div class="input-group text-right col-md-12">
+                @Html.AntiForgeryToken()
+                <div class="col-md-4">
+                    <input type="text" class="form-control" name="Quantity" placeholder="Quantity" required />
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" name="Phone" placeholder="Your Phone Number" required />
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" name="Color" placeholder="Color: Ex: 2Red, 3Black..." required />
+                </div>
+                <br /><br />
+                <div class="col-md-4">
+                    <input type="text" class="form-control" name="Others" placeholder="Other Specification" required />
+                </div>
+
+
+                <div class="form-group">
+                    <input type="hidden" name="Creator" value="@User.Identity.Name" />
+                    <input type="hidden" name="CreateDate" value="@DateTime.Now" />
+                    @*<input type="hidden" name="SalesId" value="@id" />*@
+                   @* <input type="hidden" name="CreateDate" value="@DateTime.Now" />*@
+                </div>
+
+
+                <br /><br />
+                <div class="col-md-4">
+                    <input type="submit" value="Send Request" class="btn btn-success btn-lg" />
+                </div>
+
+            </div>
+        </div>
+    }
+        </div>
+
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.SalesId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
