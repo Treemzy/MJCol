@@ -88,10 +88,10 @@ namespace MJCollections.Controllers
                         return RedirectToAction("Index");
                     }
                 }
-                else
-                {
-                    TempData["Error"] = "You have uploaded an invalid file format, please ensure you upload a valid file format!";
-                }
+                //else
+                //{
+                //    TempData["Error"] = "You have uploaded an invalid file format, please ensure you upload a valid file format!";
+                //}
 
 
 
